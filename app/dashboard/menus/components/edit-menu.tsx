@@ -8,7 +8,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Category } from "@/db/schema";
+import { Category, Menu } from "@/db/schema";
 import { updateMenuItem } from "@/lib/action";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader, Pencil } from "lucide-react";
@@ -28,10 +28,10 @@ const menuSchema = z.object({
 
 type MenuSchemaType = z.infer<typeof menuSchema>;
 
-const EditMenu: FC<{ categories: Category[]; menu: any }> = ({
-  categories,
-  menu,
-}) => {
+const EditMenu: FC<{
+  categories: Category[];
+  menu: Menu & { category_name: string; category_id: number };
+}> = ({ categories, menu }) => {
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -67,6 +67,7 @@ const EditMenu: FC<{ categories: Category[]; menu: any }> = ({
             setEditDialogOpen(true);
             reset({
               ...menu,
+              // @ts-expect-error fuck
               category_id: String(menu.category_id),
             });
           }}

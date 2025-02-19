@@ -35,7 +35,7 @@ const AddCategory = () => {
       await addCategory(data.name);
       toast.success("Category added");
       reset({ name: "" });
-    } catch (err) {
+    } catch {
       toast.error("Category adding failed");
     } finally {
       setLoading(false);

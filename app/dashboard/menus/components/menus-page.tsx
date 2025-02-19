@@ -7,6 +7,7 @@ const MenusPage = async () => {
     getCategories(),
   ]); // Fetch both menus & categories
 
+  console.log("MENUS", menus);
   return <MenusTable menus={menus} categories={categories} />;
 };
 

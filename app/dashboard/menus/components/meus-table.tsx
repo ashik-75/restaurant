@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Category } from "@/db/schema";
+import { Category, Menu } from "@/db/schema";
 import DeleteMenu from "./delete-menu";
 import EditMenu from "./edit-menu";
 
@@ -16,7 +16,7 @@ const MenusTable = ({
   menus,
   categories,
 }: {
-  menus: any[];
+  menus: (Menu & { category_name: string; category_id: number })[];
   categories: Category[];
 }) => {
   return (

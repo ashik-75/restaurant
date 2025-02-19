@@ -10,7 +10,10 @@ const Admin = async () => {
       <div className="flex gap-5">
         <div className="p-5">
           <h1>Total menu : {menuCount.at(0)?.count.toLocaleString()}</h1>
-          <Link href={"/admin/menus"} className="underline underline-offset-1">
+          <Link
+            href={"/dashboard/menus"}
+            className="underline underline-offset-1"
+          >
             {" "}
             visit menu{" "}
           </Link>
@@ -18,7 +21,10 @@ const Admin = async () => {
 
         <div className="p-5">
           <h1>Total orders: {orderCount.at(0)?.count.toLocaleString()}</h1>
-          <Link href={"/admin/orders"} className="underline underline-offset-1">
+          <Link
+            href={"/dashboard/orders"}
+            className="underline underline-offset-1"
+          >
             {" "}
             visit order{" "}
           </Link>

@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
-import OrderInCart from "./components/order-in-cart";
+import { Nunito_Sans } from "next/font/google";
 
 import QueryProvider from "@/providers/query-client-provider";
 import { Toaster } from "react-hot-toast";
+import Header from "./components/header";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Import Inter font
+const inter = Nunito_Sans({
   subsets: ["latin"],
 });
 
@@ -29,23 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.className} `}>
         <QueryProvider>
           <Toaster /> {/* Wrap entire app */}
-          <header className="border-b backdrop-blur bg-white w-full flex justify-between p-10 fixed top-0 left-0 h-[100px] z-10">
-            <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
-              <h1 className="font-bold italic text-5xl">Indian Cuisine</h1>
-              <div className="flex gap-5 items-center">
-                <Link href={"/admin"} className="rounded px-2 py-1 border">
-                  Admin
-                </Link>
-                <OrderInCart />
-              </div>
-            </div>
-          </header>
-          <main className="mt-[200px] max-w-7xl mx-auto ">{children}</main>
+          <Header />
+          <main className="mt-[150px] max-w-7xl mx-auto">{children}</main>
         </QueryProvider>
       </body>
     </html>

@@ -38,7 +38,7 @@ const AddMenuForm = ({ categories }: { categories: Category[] }) => {
   const onSubmit = async (data: MenuFormValues) => {
     try {
       setLoading(true);
-      await addMenuItem(data);
+      await addMenuItem({ ...data, price: String(data.price) });
       toast.success("Menu added");
       reset({});
     } catch (error) {
